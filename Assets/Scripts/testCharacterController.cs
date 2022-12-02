@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class testCharacterController : MonoBehaviour
 {
     public float speed = 6.0F;
@@ -35,7 +36,9 @@ public class testCharacterController : MonoBehaviour
         if(moveDirection != Vector3.zero)
         {
             var step = turningSpeed * Time.deltaTime;
-            Quaternion newRotation = Quaternion.LookRotation(moveDirection, transform.up);
+            Vector3 newLook = moveDirection;
+            newLook.y = 0;
+            Quaternion newRotation = Quaternion.LookRotation(newLook, transform.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, step);
         }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// https://answers.unity.com/questions/602210/move-a-platform-left-and-right-continuosly.html
 public class Platform : MonoBehaviour
 {
     public Transform target; // the target position
@@ -18,7 +19,7 @@ public class Platform : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (moveObj == true)
         {
