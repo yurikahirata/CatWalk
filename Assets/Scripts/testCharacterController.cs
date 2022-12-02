@@ -11,6 +11,7 @@ public class testCharacterController : MonoBehaviour
 
     private Vector3 moveDirection = Vector3.zero;
 
+
     CharacterController controller;
     void Start()
     {
@@ -22,6 +23,7 @@ public class testCharacterController : MonoBehaviour
         // if controller is grounded: get move direction and speed
         if (controller.isGrounded)
         {
+            
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
@@ -40,5 +42,6 @@ public class testCharacterController : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+
     }
 }
