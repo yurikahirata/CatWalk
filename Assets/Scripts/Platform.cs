@@ -30,7 +30,7 @@ public class Platform : MonoBehaviour
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, origin.position, step); // moves position a step closer to the target position
+                transform.position = Vector3.MoveTowards(transform.position, origin.position, step); // moves position a step closer to the origin position
             }
 
             if(transform.position == target.position) { forwards = false; }

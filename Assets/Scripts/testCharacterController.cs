@@ -12,6 +12,11 @@ public class testCharacterController : MonoBehaviour
 
     private Vector3 moveDirection = Vector3.zero;
 
+    //protected Platform onMovingPlatform;
+    //public GameObject groundCheck;
+    //public LayerMask groundLayers;
+    //public float groundRayLength = 0.2f;
+
 
     CharacterController controller;
     void Start()
@@ -45,6 +50,12 @@ public class testCharacterController : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+
+        //RaycastHit hit = Physics.Raycast(groundCheck.transform.position, Vector3.down, groundRayLength, groundLayers);
+        //if (hit.collider!=null)
+        //{
+        //    onMovingPlatform = hit.collider.gameObject.GetComponent<MovingPlatform>();
+        //}
 
     }
 }
