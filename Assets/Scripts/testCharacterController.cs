@@ -10,12 +10,11 @@ public class testCharacterController : MonoBehaviour
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
 
-    private Vector3 moveDirection = Vector3.zero;
+    private Vector3 moveForward = Vector3.zero;
 
     //protected Platform onMovingPlatform;
-    //public GameObject groundCheck;
-    //public LayerMask groundLayers;
-    //public float groundRayLength = 0.2f;
+    public LayerMask groundLayer = LayerMask.GetMask();
+    public float groundRayLength = 0.2f;
 
 
     CharacterController controller;
@@ -26,6 +25,40 @@ public class testCharacterController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // turn around
+        float angle = Input.GetAxis("Horizontal") * turningSpeed * Time.deltaTime;
+        Quaternion newRot = Quaternion.AngleAxis(angle, transform.up);
+        transform.rotation *= newRot;
+        
+        //get input to move forward
+        moveForward = new Vector3(0, 0, Input.GetAxis("Vertical"));
+        if (controller.isGrounded)
+        {
+            if (Input.GetButton("Jump"))
+                moveForward.y = jumpSpeed;
+        }
+        
+
+        //detect moving platform
+        RaycastHit hit;
+        bool onPlatform = Physics.Raycast(transform.position, Vector3.down, out hit, groundRayLength, groundLayer);
+        if (hit.transform != null)
+        {
+            Debug.Log("I'm on a platform!");
+            Vector3 targetPos = hit.transform.parent.GetComponent<Platform>().target.position;
+            Vector3 originPos = hit.transform.parent.GetComponent<Platform>().origin.position;
+            float platSpeed = hit.transform.parent.GetComponent<Platform>().speed;
+            Vector3 platformVel = (targetPos - originPos) * platSpeed;
+            moveForward += platformVel;
+        }
+
+        // move forward
+        moveForward = transform.TransformDirection(moveForward);
+        moveForward *= speed;
+        moveForward.y -= gravity * Time.deltaTime;
+        controller.Move(moveForward * Time.deltaTime);
+
+        /*
         // if controller is grounded: get move direction and speed
         if (controller.isGrounded)
         {
@@ -40,11 +73,11 @@ public class testCharacterController : MonoBehaviour
         //issues with going backwards
         if(moveDirection != Vector3.zero)
         {
-            var step = turningSpeed * Time.deltaTime;
+            var step = turningSpeed * Time.deltaTime; //angle = this * input on horizontal axis; turning on y-axis (transform.up)
             Vector3 newLook = moveDirection;
             newLook.y = 0;
             Quaternion newRotation = Quaternion.LookRotation(newLook, transform.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, step);
+            transform.rotation = newRotation; // Quaternion.Slerp(transform.rotation, newRotation, step);
         }
 
 
@@ -56,6 +89,6 @@ public class testCharacterController : MonoBehaviour
         //{
         //    onMovingPlatform = hit.collider.gameObject.GetComponent<MovingPlatform>();
         //}
-
+        */
     }
 }
