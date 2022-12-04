@@ -45,7 +45,6 @@ public class CatAnimator : MonoBehaviour
             timer += Time.deltaTime;
             if(timer > waitToTurnHead)
             {
-                Debug.Log("timer:" + timer);
                 animator.SetBool("turnidle", true);
                 //timer = 0;
             }
@@ -54,7 +53,6 @@ public class CatAnimator : MonoBehaviour
         //if current state is Idle_B, go back to Idle_A when animation is done
         if (stateInfo.IsName("Base Layer.Idle_B"))
         {
-            Debug.Log("turning head");
             animator.SetBool("turnidle", false);
             timer = 0;
         }
