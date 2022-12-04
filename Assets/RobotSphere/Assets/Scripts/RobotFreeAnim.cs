@@ -22,6 +22,7 @@ public class RobotFreeAnim : MonoBehaviour {
 		gameObject.transform.eulerAngles = rot;
 	}
 
+	
 	void CheckKey()
 	{
 		// Walk
@@ -72,5 +73,6 @@ public class RobotFreeAnim : MonoBehaviour {
 			}
 		}
 	}
+	
 
 }
