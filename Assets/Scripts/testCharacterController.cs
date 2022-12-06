@@ -24,6 +24,8 @@ public class testCharacterController : MonoBehaviour
 
     private Vector3 spawnPoint;
 
+    bool isDead = false;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -90,17 +92,31 @@ public class testCharacterController : MonoBehaviour
         }
         
         // actually move
-        
-        controller.Move(moveForward * Time.deltaTime);
+
+        if(!isDead)
+            controller.Move(moveForward * Time.deltaTime);
+        isDead = false;
 
         
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        
        if (other.gameObject.CompareTag("Respawn"))
         {
+            Debug.Log("collided");
+            isDead = true;
+            //StartCoroutine(OnDeath());
             transform.position = spawnPoint;
         }
     }
+
+    //public IEnumerator OnDeath()
+    //{
+    //    Debug.Log(spawnPoint);
+    //    Debug.Log(transform.position);
+    //    transform.position = spawnPoint;
+    //    yield return new WaitForSeconds(1);
+    //} 
 }
