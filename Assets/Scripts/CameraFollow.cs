@@ -19,7 +19,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        /*
+        
         Vector3 desiredPosition = target.position + target.rotation * locationOffset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
@@ -27,10 +27,14 @@ public class CameraFollow : MonoBehaviour
         Quaternion desiredrotation = target.rotation * Quaternion.Euler(rotationOffset);
         Quaternion smoothedrotation = Quaternion.Lerp(transform.rotation, desiredrotation, smoothSpeed);
         transform.rotation = smoothedrotation;
-        */
+        
+        /*
+        // https://stackoverflow.com/questions/65816546/unity-camera-follows-player-script
+        // check desired position based on target, then go there in smooth increments
         Vector3 desiredPosition = target.position + locationOffset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
+        */
 
     }
 }

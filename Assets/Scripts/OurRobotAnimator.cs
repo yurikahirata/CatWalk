@@ -36,20 +36,6 @@ public class OurRobotAnimator : MonoBehaviour
         anim.SetBool("Walk_Anim", false);
     }
 
-    /*
-    public void WakeUp()
-    {
-        if (!anim.GetBool("Open_Anim"))
-        {
-            anim.SetBool("Open_Anim", true);
-        }
-        else
-        {
-            anim.SetBool("Open_Anim", false);
-        }
-    }
-    */
-
     public void Wake()
     {
         anim.SetBool("Open_Anim", true);
