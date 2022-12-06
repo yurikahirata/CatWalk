@@ -434,11 +434,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &993208565 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7315765711080430226, guid: b3d7965b39eb8834098ff93f0c288b26, type: 3}
-  m_PrefabInstance: {fileID: 1433097896}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1031881886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8043393007493526657, guid: 420f81a79e6c3234591a7e6a667395b0, type: 3}
@@ -700,7 +695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7315765711080430226, guid: b3d7965b39eb8834098ff93f0c288b26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.449936
+      value: -1.496962
       objectReference: {fileID: 0}
     - target: {fileID: 7315765711080430226, guid: b3d7965b39eb8834098ff93f0c288b26, type: 3}
       propertyPath: m_LocalPosition.y
@@ -708,7 +703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7315765711080430226, guid: b3d7965b39eb8834098ff93f0c288b26, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.9417267
+      value: 5.39
       objectReference: {fileID: 0}
     - target: {fileID: 7315765711080430226, guid: b3d7965b39eb8834098ff93f0c288b26, type: 3}
       propertyPath: m_LocalRotation.w
@@ -749,7 +744,7 @@ PrefabInstance:
     - target: {fileID: 7316498002626825251, guid: b3d7965b39eb8834098ff93f0c288b26, type: 3}
       propertyPath: start
       value: 
-      objectReference: {fileID: 993208565}
+      objectReference: {fileID: 1147203007}
     - target: {fileID: 7317226385195104106, guid: b3d7965b39eb8834098ff93f0c288b26, type: 3}
       propertyPath: m_Name
       value: RobotEnemy (1)
