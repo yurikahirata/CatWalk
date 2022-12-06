@@ -1294,6 +1294,7 @@ GameObject:
   - component: {fileID: 7118453480123096301}
   - component: {fileID: 7118453480123096302}
   - component: {fileID: 7118453480123096298}
+  - component: {fileID: 4900125769548870027}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -1370,14 +1371,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  turningSpeed: 3
-  jumpSpeed: 8
+  turningSpeed: 200
+  jumpSpeed: 30
   gravity: 20
-  platform:
+  jumpHeight: 1.25
+  groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  groundCheckPoint: {fileID: 8093356556574457178}
-  groundCheckRadius: 0.2
 --- !u!114 &7118453480123096298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1392,6 +1392,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   waitToTurnHead: 5
+--- !u!65 &4900125769548870027
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118453480123062870}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.46922922, y: 0.9022498, z: 1.2426457}
+  m_Center: {x: -0.0003809929, y: 0.4509375, z: -0.005404949}
 --- !u!1 &7118453480123062872
 GameObject:
   m_ObjectHideFlags: 0

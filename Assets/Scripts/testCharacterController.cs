@@ -22,9 +22,12 @@ public class testCharacterController : MonoBehaviour
     
     private float tempJumpHeight;
 
+    private Vector3 spawnPoint;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        spawnPoint = transform.position;
     }
 
     void FixedUpdate()
@@ -70,22 +73,10 @@ public class testCharacterController : MonoBehaviour
         }
 
 
-        /*
-        if (controller.isGrounded)
-        {
-            if (Input.GetButton("Jump"))
-            {
-                //moveForward.y = jumpSpeed;
-                moveForward.y += Mathf.Sqrt(jumpSpeed);
-            }
-
-        }
-        */
 
         // clean up input
         moveForward = transform.TransformDirection(moveForward);
         moveForward *= speed;
-        //moveForward.y -= gravity * Time.deltaTime;
 
         //detect moving platform
         RaycastHit hit;
@@ -102,48 +93,14 @@ public class testCharacterController : MonoBehaviour
         
         controller.Move(moveForward * Time.deltaTime);
 
-        /*
-        // move forward
-        moveForward = transform.TransformDirection(moveForward);
-        moveForward *= speed;
-        moveForward.y -= gravity * Time.deltaTime;
-        controller.Move(moveForward * Time.deltaTime);
-        */
+        
+    }
 
-
-
-
-        /*
-        // if controller is grounded: get move direction and speed
-        if (controller.isGrounded)
+    private void OnTriggerEnter(Collider other)
+    {
+       if (other.gameObject.CompareTag("Respawn"))
         {
-            
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= speed;
-            if (Input.GetButton("Jump"))
-                moveDirection.y = jumpSpeed;
+            transform.position = spawnPoint;
         }
-
-        //issues with going backwards
-        if(moveDirection != Vector3.zero)
-        {
-            var step = turningSpeed * Time.deltaTime; //angle = this * input on horizontal axis; turning on y-axis (transform.up)
-            Vector3 newLook = moveDirection;
-            newLook.y = 0;
-            Quaternion newRotation = Quaternion.LookRotation(newLook, transform.up);
-            transform.rotation = newRotation; // Quaternion.Slerp(transform.rotation, newRotation, step);
-        }
-
-
-        moveDirection.y -= gravity * Time.deltaTime;
-        controller.Move(moveDirection * Time.deltaTime);
-
-        //RaycastHit hit = Physics.Raycast(groundCheck.transform.position, Vector3.down, groundRayLength, groundLayers);
-        //if (hit.collider!=null)
-        //{
-        //    onMovingPlatform = hit.collider.gameObject.GetComponent<MovingPlatform>();
-        //}
-        */
     }
 }

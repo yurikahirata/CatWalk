@@ -170,6 +170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConeCollider
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: cecfdc73d3bcf406fbfa5c8b686fdb61, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7635826562936255635, guid: cecfdc73d3bcf406fbfa5c8b686fdb61, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cecfdc73d3bcf406fbfa5c8b686fdb61, type: 3}
