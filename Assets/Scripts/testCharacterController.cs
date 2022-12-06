@@ -18,86 +18,100 @@ public class testCharacterController : MonoBehaviour
 
     CharacterController controller;
 
-    private bool rising;
-    
     private float tempJumpHeight;
 
     private Vector3 spawnPoint;
 
-    bool isDead = false;
+    // states 
+    private bool isDead = false;
+    private bool rising;
+
+    public enum State
+    {
+        Alive,
+        Dead,
+    }
+
+    private State state;
+ 
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         spawnPoint = transform.position;
+        state = State.Alive;
     }
 
     void FixedUpdate()
     {
         // turn around
-        float angle = Input.GetAxis("Horizontal") * turningSpeed * Time.deltaTime;
-        Quaternion newRot = Quaternion.AngleAxis(angle, transform.up);
-        transform.rotation *= newRot;
-        
-        //get input to move forward
-        moveForward = new Vector3(0, 0, Input.GetAxis("Vertical"));
-        
-        // JUMP
-        //if is grounded and get button jump, rise into air.
-        if (controller.isGrounded)
+        if (state == State.Alive)
         {
-            if (Input.GetButton("Jump"))
+            float angle = Input.GetAxis("Horizontal") * turningSpeed * Time.deltaTime;
+            Quaternion newRot = Quaternion.AngleAxis(angle, transform.up);
+            transform.rotation *= newRot;
+
+            //get input to move forward
+            moveForward = new Vector3(0, 0, Input.GetAxis("Vertical"));
+
+            // JUMP
+            //if is grounded and get button jump, rise into air.
+            if (controller.isGrounded)
             {
-                moveForward.y += (jumpSpeed * Time.deltaTime);
-                rising = true;
-                tempJumpHeight = transform.position.y + jumpHeight;
+                if (Input.GetButton("Jump"))
+                {
+                    moveForward.y += (jumpSpeed * Time.deltaTime);
+                    rising = true;
+                    tempJumpHeight = transform.position.y + jumpHeight;
+                }
             }
+            // if is not grounded, check if at top of jump.
+            if (!controller.isGrounded)
+            {
+                float distanceFromJump = Mathf.Abs(tempJumpHeight - transform.position.y);
+                //if so, start sinking
+                if (distanceFromJump < 0.1)
+                {
+                    rising = false;
+                }
+                //rise if haven't reached the top
+                if (rising)
+                {
+                    moveForward.y += jumpSpeed * Time.deltaTime;
+                }
+                //sink if you have
+                else
+                {
+                    moveForward.y -= gravity * Time.deltaTime;
+                }
+            }
+
+
+
+            // clean up input
+            moveForward = transform.TransformDirection(moveForward);
+            moveForward *= speed;
+
+            //detect moving platform
+            RaycastHit hit;
+            bool onPlatform = Physics.Raycast(transform.position, Vector3.down, out hit, groundRayLength, groundLayer);
+            if (hit.transform != null)
+            {
+                Debug.Log("I'm on a " + hit.transform.gameObject);
+                bool movingPlat = hit.transform.gameObject.GetComponent<Platform>().moveObj;
+                Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
+                if (movingPlat) { moveForward += rb.velocity; }
+            }
+
+            // actually move
+                controller.Move(moveForward * Time.deltaTime);
         }
-        // if is not grounded, check if at top of jump.
-        if (!controller.isGrounded)
+
+        if (state == State.Dead)
         {
-            float distanceFromJump = Mathf.Abs(tempJumpHeight - transform.position.y);
-            //if so, start sinking
-            if(distanceFromJump < 0.1)
-            {
-                rising = false;
-            }
-            //rise if haven't reached the top
-            if (rising)
-            {
-                moveForward.y += jumpSpeed * Time.deltaTime;
-            }
-            //sink if you have
-            else
-            {
-                moveForward.y -= gravity * Time.deltaTime;
-            }
+            transform.position = spawnPoint;
+            state = State.Alive;
         }
-
-
-
-        // clean up input
-        moveForward = transform.TransformDirection(moveForward);
-        moveForward *= speed;
-
-        //detect moving platform
-        RaycastHit hit;
-        bool onPlatform = Physics.Raycast(transform.position, Vector3.down, out hit, groundRayLength, groundLayer);
-        if (hit.transform != null)
-        {
-            Debug.Log("I'm on a " + hit.transform.gameObject);
-            bool movingPlat = hit.transform.gameObject.GetComponent<Platform>().moveObj;
-            Rigidbody rb = hit.transform.GetComponent<Rigidbody>(); 
-            if (movingPlat) { moveForward += rb.velocity; }
-        }
-        
-        // actually move
-
-        if(!isDead)
-            controller.Move(moveForward * Time.deltaTime);
-        isDead = false;
-
-        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -106,17 +120,7 @@ public class testCharacterController : MonoBehaviour
        if (other.gameObject.CompareTag("Respawn"))
         {
             Debug.Log("collided");
-            isDead = true;
-            //StartCoroutine(OnDeath());
-            transform.position = spawnPoint;
+            state = State.Dead;
         }
     }
-
-    //public IEnumerator OnDeath()
-    //{
-    //    Debug.Log(spawnPoint);
-    //    Debug.Log(transform.position);
-    //    transform.position = spawnPoint;
-    //    yield return new WaitForSeconds(1);
-    //} 
 }
