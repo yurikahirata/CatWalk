@@ -22,8 +22,6 @@ public class testCharacterController : MonoBehaviour
 
     private Vector3 spawnPoint;
 
-    // states 
-    private bool isDead = false;
     private bool rising;
 
     public enum State
