@@ -538,7 +538,6 @@ GameObject:
   - component: {fileID: 8839254801810233661}
   - component: {fileID: 8839254801817958107}
   - component: {fileID: 8839254801810621374}
-  - component: {fileID: 8839254801810621375}
   - component: {fileID: 8839254801810621368}
   - component: {fileID: 8839254801810621369}
   - component: {fileID: 2603405949559923870}
@@ -604,26 +603,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.4, z: 0}
---- !u!114 &8839254801810621375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8839254801810654493}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b606e8cfeeaec4c569e0e9662ca06520, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 6
-  turningSpeed: 200
-  jumpSpeed: 30
-  gravity: 20
-  jumpHeight: 1.25
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &8839254801810621368
 MonoBehaviour:
   m_ObjectHideFlags: 0

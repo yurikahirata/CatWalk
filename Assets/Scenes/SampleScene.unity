@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: YurikaKitty
       objectReference: {fileID: 0}
+    - target: {fileID: 8839254801810654493, guid: 466edea927ba343b7a35a775cdf9b9e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 466edea927ba343b7a35a775cdf9b9e0, type: 3}
 --- !u!1 &705507993
