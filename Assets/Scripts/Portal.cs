@@ -15,7 +15,7 @@ public class Portal : MonoBehaviour
         level = SceneManager.GetActiveScene().name;
 
         // if final level, load main menu
-        if (isFinalLevel) level = "MainMenu";
+        if (isFinalLevel) level = "Menu";
         else
         {
             float levelNumber = float.Parse(level.Substring(5)) + 1;

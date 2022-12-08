@@ -476,6 +476,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1830498314811172341, guid: ae52f92a44a014022a610441991c32c7, type: 3}
+      propertyPath: m_Radius
+      value: 0.36698675
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830498314811172341, guid: ae52f92a44a014022a610441991c32c7, type: 3}
+      propertyPath: m_Center.x
+      value: -0.012237072
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830498314811172341, guid: ae52f92a44a014022a610441991c32c7, type: 3}
+      propertyPath: m_Center.y
+      value: 0.03366971
+      objectReference: {fileID: 0}
     - target: {fileID: 3643595177010327773, guid: ae52f92a44a014022a610441991c32c7, type: 3}
       propertyPath: m_Name
       value: Portal
