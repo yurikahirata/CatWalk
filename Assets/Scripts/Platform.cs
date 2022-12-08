@@ -11,7 +11,7 @@ public class Platform : MonoBehaviour
     private Vector3 targetPos;
  
     public float speed; // speed - units per second
-    public bool moveObj; // toggle motion on and off
+    public static bool moveObj; // toggle motion on and off
     // public bool forwards = true;
 
 
