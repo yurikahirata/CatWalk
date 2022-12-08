@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 
 public class OurRobotController : MonoBehaviour
 {   
@@ -11,8 +13,8 @@ public class OurRobotController : MonoBehaviour
     public float speed;
 
     private bool wokeUp;
-    private Rigidbody rb;
-    private Vector3 targetPos;
+    //private Rigidbody rb;
+    //private Vector3 targetPos;
     private OurRobotAnimator myAnim;
     private Animator animator;
 
@@ -24,11 +26,11 @@ public class OurRobotController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         myAnim = GetComponent<OurRobotAnimator>();
         animator = GetComponent<Animator>();
         wokeUp = false;
-        targetPos = end.position;
+        //targetPos = end.position;
 
         forward = true;
         toEnd = (end.position - start.position).normalized;
@@ -40,7 +42,7 @@ public class OurRobotController : MonoBehaviour
     {
 
         //if cat is in range, wake up
-        if (CatInRange())
+        if (wokeUp == false && CatInRange())
         {
             myAnim.Wake();
             wokeUp = true;
@@ -72,24 +74,21 @@ public class OurRobotController : MonoBehaviour
         AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
         if (state.IsName("anim_Walk_Loop"))
         {
+            //switch direction if necessary
             CheckForEndpoint();
+            //move in correct direction
             if (forward)
             {
-                rb.MovePosition(transform.position + toEnd * speed * Time.deltaTime);
+                //rb.MovePosition(transform.position + toEnd * speed * Time.deltaTime);
+                transform.position += toEnd * Time.deltaTime * speed;
             }
             else if (!forward)
             {
-                rb.MovePosition(transform.position + fromEnd * speed * Time.deltaTime);
+                //rb.MovePosition(transform.position + fromEnd * speed * Time.deltaTime);
+                transform.position += fromEnd * Time.deltaTime * speed;
             }
         }
 
-    }
-
-    //new switching direction function
-    void SwitchDirection()
-    {
-        forward = !forward;
-        Debug.Log("Time is " + Time.deltaTime + " and I am now going forward? " + forward);
     }
 
     //check if close to an endpoint, switch direction
@@ -108,12 +107,10 @@ public class OurRobotController : MonoBehaviour
         //if close to an endpoint, change target of walk
         if (distanceFromEnd < 0.5f)
         {
-            //SwitchDirection();
             forward = false;
         }
-        if (distanceFromStart < 0.5f)
+        else if (distanceFromStart < 0.5f)
         {
-            //SwitchDirection();
             forward = true;
         }
     }

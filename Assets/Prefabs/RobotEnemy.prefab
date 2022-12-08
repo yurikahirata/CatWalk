@@ -803,9 +803,10 @@ GameObject:
   - component: {fileID: 7316498002626825308}
   - component: {fileID: 7316498002626825310}
   - component: {fileID: 7316498002626825251}
+  - component: {fileID: 4043411971633961225}
   m_Layer: 0
   m_Name: RobotEnemy
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -819,7 +820,7 @@ Transform:
   m_GameObject: {fileID: 7317226385195104106}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.4, y: 0.5, z: 8.9}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7321084437902255480}
@@ -904,6 +905,19 @@ MonoBehaviour:
   start: {fileID: 0}
   end: {fileID: 0}
   speed: 5
+--- !u!135 &4043411971633961225
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7317226385195104106}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1 &7317228777494408060
 GameObject:
   m_ObjectHideFlags: 0
