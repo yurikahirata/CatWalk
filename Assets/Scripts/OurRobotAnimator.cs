@@ -5,7 +5,6 @@ using UnityEngine;
 public class OurRobotAnimator : MonoBehaviour
 {
     private Vector3 rot = Vector3.zero;
-    private float rotSpeed = 40f;
     private Animator anim;
     
 
@@ -21,9 +20,6 @@ public class OurRobotAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.eulerAngles = rot;
-
-        
     }
 
     public void StartWalk()
