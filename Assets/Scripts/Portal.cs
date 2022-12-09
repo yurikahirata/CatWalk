@@ -9,8 +9,13 @@ public class Portal : MonoBehaviour
     private string level;
     public bool isFinalLevel;
 
+    private AudioSource source;
+    public AudioClip portalSound;
+
     void Start()
     {
+        source = GetComponent<AudioSource>();
+
         // splicing level name to automatically pull next level
         level = SceneManager.GetActiveScene().name;
 
@@ -27,6 +32,9 @@ public class Portal : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            source.clip = portalSound;
+            print(source.clip);
+            source.Play();
             SceneManager.LoadScene(level);
         }
     }

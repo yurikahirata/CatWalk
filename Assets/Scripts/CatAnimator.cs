@@ -24,7 +24,7 @@ public class CatAnimator : MonoBehaviour
         // walk when moving
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
-            Debug.Log("Moving.");
+            //Debug.Log("Moving.");
             animator.SetInteger("motion", 1);
             animator.SetBool("turnidle", false);
         }
@@ -32,7 +32,7 @@ public class CatAnimator : MonoBehaviour
         //stop moving when there is no input
         if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
         {
-            Debug.Log("Stopping.");
+            //Debug.Log("Stopping.");
             animator.SetInteger("motion", 0);
         }
 

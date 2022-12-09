@@ -11,6 +11,8 @@ public class testCharacterController : MonoBehaviour
     public float gravity = 20.0f;
     public float jumpHeight = 1.25f;
     public LayerMask groundLayer = LayerMask.GetMask();
+    private AudioSource source;
+    public AudioClip deathSound;
 
     private Vector3 moveForward = Vector3.zero;
 
@@ -35,6 +37,7 @@ public class testCharacterController : MonoBehaviour
 
     void Start()
     {
+        source = GetComponent<AudioSource>();
         controller = GetComponent<CharacterController>();
         spawnPoint = transform.position;
         state = State.Alive;
@@ -107,6 +110,9 @@ public class testCharacterController : MonoBehaviour
 
         if (state == State.Dead)
         {
+            //source.PlayOneShot(deathSound);
+            source.clip = deathSound;
+            source.Play();
             transform.position = spawnPoint;
             state = State.Alive;
         }

@@ -11,7 +11,7 @@ public class SpotlightScript : MonoBehaviour
     private float swingMax; // maximum angle
     private float swingMin; // minimum angle
     private float direction; // forward or backwards
-  
+
 
     void Start()
     {
