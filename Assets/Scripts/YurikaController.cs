@@ -30,7 +30,7 @@ public class YurikaController : MonoBehaviour
         state = State.Alive;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         // turn around
         if (state == State.Alive)
