@@ -31,13 +31,13 @@ public class SpotlightScript : MonoBehaviour
                 swingMin = 0.5f; // approx. 60 degrees
             }
 
-            if (transform.rotation.x > swingMax)
+            if (transform.rotation.x > swingMax || transform.rotation.z > swingMax)
             {
                 direction = -1;
             }
 
 
-            if (transform.rotation.x < swingMin)
+            if (transform.rotation.x < swingMin || transform.rotation.z < swingMin)
                 direction = 1;
 
             transform.Rotate(Time.deltaTime * speed * direction, 0, 0);
