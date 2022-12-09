@@ -1,36 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 
 public class OurRobotController : MonoBehaviour
 {   
     public GameObject cat;
     public float catRange;
-    private bool wokeUp;
-    
-    private Rigidbody rb;
     public Transform start;
     public Transform end;
     public float speed;
-    private Vector3 targetPos;
+
+    private bool wokeUp;
+    //private Rigidbody rb;
+    //private Vector3 targetPos;
     private OurRobotAnimator myAnim;
     private Animator animator;
+
+    private Vector3 toEnd;
+    private Vector3 fromEnd;
+    private bool forward;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         myAnim = GetComponent<OurRobotAnimator>();
         animator = GetComponent<Animator>();
         wokeUp = false;
+        //targetPos = end.position;
+
+        forward = true;
+        toEnd = (end.position - start.position).normalized;
+        fromEnd = (start.position - end.position).normalized;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+
         //if cat is in range, wake up
-        if (CatInRange())
+        if (wokeUp == false && CatInRange())
         {
             myAnim.Wake();
             wokeUp = true;
@@ -38,7 +50,9 @@ public class OurRobotController : MonoBehaviour
         //once awake, walk around
         if (wokeUp)
         {
-            WalkAround();
+            //WalkAround();
+            
+            Walk();
         }
     }
 
@@ -50,6 +64,72 @@ public class OurRobotController : MonoBehaviour
         return false;
     }
 
+    // Walk towards an endpoint
+    void Walk()
+    {
+        //transition to walking animation
+        myAnim.StartWalk();
+
+        //once walking animation starts
+        AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+        if (state.IsName("anim_Walk_Loop"))
+        {
+            //switch direction if necessary
+            CheckForEndpoint();
+            //move in correct direction
+            if (forward)
+            {
+                //rb.MovePosition(transform.position + toEnd * speed * Time.deltaTime);
+                transform.position += toEnd * Time.deltaTime * speed;
+            }
+            else if (!forward)
+            {
+                //rb.MovePosition(transform.position + fromEnd * speed * Time.deltaTime);
+                transform.position += fromEnd * Time.deltaTime * speed;
+            }
+        }
+
+    }
+
+    //check if close to an endpoint, switch direction
+    void CheckForEndpoint()
+    {
+        //get distance from endpoints, not counting height
+        Vector3 endV = end.position;
+        endV.y = 0;
+        Vector3 startV = start.position;
+        startV.y = 0;
+        Vector3 curV = transform.position;
+        curV.y = 0;
+        float distanceFromEnd = Vector3.Distance(endV, curV);
+        float distanceFromStart = Vector3.Distance(startV, curV);
+
+        //if close to an endpoint, change target of walk
+        if (distanceFromEnd < 0.5f)
+        {
+            forward = false;
+        }
+        else if (distanceFromStart < 0.5f)
+        {
+            forward = true;
+        }
+    }
+
+    /*
+    private void OnCollisionEnter(Collision other)
+    {
+        for(int i = 0; i < other.contactCount; i++)
+        {
+            Vector3 incomingDir = transform.position - other.GetContact(i).point;
+            if(incomingDir == toEnd) { Debug.Log("Something came at me from toEnd");  forward = false; }
+            if (incomingDir == fromEnd) { Debug.Log("Something came at me from fromEnd");  forward = true; }
+        }
+        //SwitchDirection();
+    }
+    */
+
+
+    /*
     // Walk around from Start to End
     void WalkAround()
     {
@@ -63,11 +143,17 @@ public class OurRobotController : MonoBehaviour
         {
             //get current position
             Vector3 currentPos = transform.position;
-            
-            //get distance from endpoints
-            float distanceFromEnd = (end.position - currentPos).magnitude;
-            float distanceFromStart = (start.position - currentPos).magnitude;
-            
+
+            //get distance from endpoints, not counting height
+            Vector3 endV = end.position;
+            endV.y = 0;
+            Vector3 startV = start.position;
+            startV.y = 0;
+            Vector3 curV = transform.position;
+            curV.y = 0;
+            float distanceFromEnd = Vector3.Distance(endV, curV);
+            float distanceFromStart = Vector3.Distance(startV, curV);
+
             //if close to an endpoint, change target of walk
             if (distanceFromEnd < 0.5f)
             {
@@ -80,10 +166,8 @@ public class OurRobotController : MonoBehaviour
             //walk towards target
             Vector3 targetDirection = (targetPos - currentPos).normalized;
             rb.MovePosition(transform.position + targetDirection * speed * Time.deltaTime);
-        }
-
-
-            
+        }   
 
         }
+    */
 }
