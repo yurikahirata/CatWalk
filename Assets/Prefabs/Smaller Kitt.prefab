@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  turningSpeed: 200
+  turningSpeed: 150
   jumpSpeed: 30
   gravity: 20
   jumpHeight: 1.25
