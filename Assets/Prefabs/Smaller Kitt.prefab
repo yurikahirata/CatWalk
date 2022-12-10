@@ -147,6 +147,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  deathSound: {fileID: 8300000, guid: dc06af3e342a64eac8dac4a8a217bde9, type: 3}
 --- !u!114 &8573952881698015222
 MonoBehaviour:
   m_ObjectHideFlags: 0
