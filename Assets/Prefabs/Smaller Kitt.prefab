@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 8573952881698015223}
   - component: {fileID: 8573952881698015222}
   - component: {fileID: -6073680427239567035}
-  - component: {fileID: -8994343787771830172}
+  - component: {fileID: 5684132853084273104}
   m_Layer: 0
   m_Name: Smaller Kitt
   m_TagString: Player
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMagnitude: 1
---- !u!82 &-8994343787771830172
+--- !u!82 &5684132853084273104
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,9 +186,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dc06af3e342a64eac8dac4a8a217bde9, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.413
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
