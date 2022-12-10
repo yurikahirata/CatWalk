@@ -113,8 +113,6 @@ public class testCharacterController : MonoBehaviour
             //source.PlayOneShot(deathSound);
             source.clip = deathSound;
             source.Play();
-            transform.position = spawnPoint;
-            state = State.Alive;
 =======
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 >>>>>>> Stashed changes
