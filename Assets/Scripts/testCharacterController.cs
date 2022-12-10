@@ -26,6 +26,7 @@ public class testCharacterController : MonoBehaviour
 
     private bool rising;
 
+
     public enum State
     {
         Alive,
@@ -44,9 +45,11 @@ public class testCharacterController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // turn around
+        if (PauseMenuScript.isPaused) return;
+
         if (state == State.Alive)
         {
+            // turn around
             float angle = Input.GetAxis("Horizontal") * turningSpeed * Time.deltaTime;
             Quaternion newRot = Quaternion.AngleAxis(angle, transform.up);
             transform.rotation *= newRot;
