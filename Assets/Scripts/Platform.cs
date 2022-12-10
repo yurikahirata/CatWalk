@@ -47,7 +47,8 @@ public class Platform : MonoBehaviour
 
             //walk towards target
             Vector3 targetDirection = (targetPos - currentPos).normalized;
-            rb.MovePosition(transform.position + targetDirection * speed * Time.deltaTime);
+            //rb.MovePosition(transform.position + targetDirection * speed * Time.deltaTime);
+            transform.position += (targetDirection * speed * Time.deltaTime);
             
         }
             

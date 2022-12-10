@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -8,7 +9,7 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed = 0.125f;
     public Vector3 locationOffset = new Vector3(0f, 1.5f, -3f);
     public Vector3 rotationOffset = Vector3.zero;
-    // public Vector3 rotationOffset; // = new Vector3(10.49f, 0f, 0f); // (10.49, 0, 0)
+    public LayerMask obstacleLayerMask;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,8 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        // https://stackoverflow.com/questions/65816546/unity-camera-follows-player-script
+        // find desired position based on target, then go there in smooth increments
         Vector3 desiredPosition = target.position + target.rotation * locationOffset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
@@ -27,14 +29,20 @@ public class CameraFollow : MonoBehaviour
         Quaternion desiredrotation = target.rotation * Quaternion.Euler(rotationOffset);
         Quaternion smoothedrotation = Quaternion.Lerp(transform.rotation, desiredrotation, smoothSpeed);
         transform.rotation = smoothedrotation;
-        
-        /*
-        // https://stackoverflow.com/questions/65816546/unity-camera-follows-player-script
-        // check desired position based on target, then go there in smooth increments
-        Vector3 desiredPosition = target.position + locationOffset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothedPosition;
-        */
+
+        // ball roller script
+        // check if there's anything between camera + player, slide camera forward if so
+        Vector3 targetToCamera = transform.position - target.position;
+        RaycastHit hit;
+        Vector3 newCameraPosition = transform.position;
+        if (Physics.Raycast(target.position, targetToCamera,
+            out hit, locationOffset.magnitude, obstacleLayerMask))
+        {
+            newCameraPosition = Vector3.Lerp(transform.position, hit.point, smoothSpeed);
+        }
+        transform.position = newCameraPosition;
+
+
 
     }
 }
