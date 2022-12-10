@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class testCharacterController : MonoBehaviour
@@ -22,8 +24,6 @@ public class testCharacterController : MonoBehaviour
 
     private float tempJumpHeight;
 
-    private Vector3 spawnPoint;
-
     private bool rising;
 
     public enum State
@@ -39,7 +39,6 @@ public class testCharacterController : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         controller = GetComponent<CharacterController>();
-        spawnPoint = transform.position;
         state = State.Alive;
     }
 
@@ -110,11 +109,15 @@ public class testCharacterController : MonoBehaviour
 
         if (state == State.Dead)
         {
+<<<<<<< Updated upstream
             //source.PlayOneShot(deathSound);
             source.clip = deathSound;
             source.Play();
             transform.position = spawnPoint;
             state = State.Alive;
+=======
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+>>>>>>> Stashed changes
         }
     }
 

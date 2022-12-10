@@ -5,13 +5,23 @@ using UnityEngine;
 public class SpotlightScript : MonoBehaviour
 {
 
-    public bool swingFull;
-    public bool swingHalf;
     public float speed;
     private float swingMax; // maximum angle
     private float swingMin; // minimum angle
     private float direction; // forward or backwards
 
+<<<<<<< Updated upstream
+=======
+    public enum State
+    {
+        swingFull,
+        swingHalf,
+        swingNone,
+    }
+
+    public State state;
+  
+>>>>>>> Stashed changes
 
     void Start()
     {
@@ -20,16 +30,18 @@ public class SpotlightScript : MonoBehaviour
 
     void Update()
     {
-        if (swingFull || swingHalf) // if swinging
+        if (state != State.swingNone)
         {
-            if (swingHalf)
-            {
-                swingMax = 0.9f; // approx. 120 degrees
-                swingMin = 0.75f; // approx. 90 degrees
-            } else
+            if (state == State.swingFull) // if swinging
             {
                 swingMax = 0.9f;
                 swingMin = 0.5f; // approx. 60 degrees
+            }
+
+            if (state == State.swingHalf)
+            {
+                swingMax = 0.9f; // approx. 120 degrees
+                swingMin = 0.75f;
             }
 
             if (transform.rotation.x > swingMax)
