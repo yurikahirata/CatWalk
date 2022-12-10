@@ -109,13 +109,10 @@ public class testCharacterController : MonoBehaviour
 
         if (state == State.Dead)
         {
-<<<<<<< Updated upstream
             //source.PlayOneShot(deathSound);
             source.clip = deathSound;
             source.Play();
-=======
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
->>>>>>> Stashed changes
         }
     }
 

@@ -10,8 +10,6 @@ public class SpotlightScript : MonoBehaviour
     private float swingMin; // minimum angle
     private float direction; // forward or backwards
 
-<<<<<<< Updated upstream
-=======
     public enum State
     {
         swingFull,
@@ -21,8 +19,6 @@ public class SpotlightScript : MonoBehaviour
 
     public State state;
   
->>>>>>> Stashed changes
-
     void Start()
     {
         direction = 1;
