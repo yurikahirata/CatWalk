@@ -1117,13 +1117,17 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8573952881698015222, guid: 9807725dbc06c6b49a6ac2066a87f6be, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8573952881698015223, guid: 9807725dbc06c6b49a6ac2066a87f6be, type: 3}
       propertyPath: speed
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8573952881698015223, guid: 9807725dbc06c6b49a6ac2066a87f6be, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8573952881698015223, guid: 9807725dbc06c6b49a6ac2066a87f6be, type: 3}
       propertyPath: turningSpeed
@@ -2468,6 +2472,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c24a9860bf074ad1a142efb744091d3, type: 3}
+--- !u!1 &1996395989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8573952882149016195, guid: 9807725dbc06c6b49a6ac2066a87f6be, type: 3}
+  m_PrefabInstance: {fileID: 651478232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1996395997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996395989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f63fc31b9c5547bdbd43946d64e419c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  turningSpeed: 100
+  jumpHeight: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  deathSound: {fileID: 8300000, guid: dc06af3e342a64eac8dac4a8a217bde9, type: 3}
 --- !u!1001 &2042753705
 PrefabInstance:
   m_ObjectHideFlags: 0
