@@ -1117,6 +1117,10 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8573952881698015216, guid: 9807725dbc06c6b49a6ac2066a87f6be, type: 3}
+      propertyPath: m_MinMoveDistance
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 8573952881698015222, guid: 9807725dbc06c6b49a6ac2066a87f6be, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2491,11 +2495,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   turningSpeed: 100
-  jumpHeight: 0.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   deathSound: {fileID: 8300000, guid: dc06af3e342a64eac8dac4a8a217bde9, type: 3}
+  jumpHeight: 1
 --- !u!1001 &2042753705
 PrefabInstance:
   m_ObjectHideFlags: 0
