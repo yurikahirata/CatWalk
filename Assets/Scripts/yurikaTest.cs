@@ -95,7 +95,7 @@ public class yurikaTest : MonoBehaviour
             {
                 Debug.Log("Jumped");
                 playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * jumpGravity);
-                groundedTimer = 1.5f;
+                groundedTimer = 1.4f;
             }
 
             playerVelocity.y += jumpGravity * Time.deltaTime;
