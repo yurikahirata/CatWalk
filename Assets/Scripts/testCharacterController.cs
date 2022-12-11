@@ -17,13 +17,9 @@ public class testCharacterController : MonoBehaviour
     public AudioClip deathSound;
 
     private Vector3 moveForward = Vector3.zero;
-
     private float groundRayLength = 0.2f;
-
-    CharacterController controller;
-
+    private CharacterController controller;
     private float tempJumpHeight;
-
     private bool rising;
 
 
@@ -97,7 +93,7 @@ public class testCharacterController : MonoBehaviour
 
             //detect moving platform
             RaycastHit hit;
-            bool onPlatform = Physics.Raycast(transform.position, Vector3.down, out hit, groundRayLength, groundLayer);
+            bool getPlatform = Physics.Raycast(transform.position, Vector3.down, out hit, groundRayLength, groundLayer);
             if (hit.transform != null)
             {
                 Debug.Log("I'm on a " + hit.transform.gameObject);
@@ -107,7 +103,7 @@ public class testCharacterController : MonoBehaviour
             }
 
             // actually move
-                controller.Move(moveForward * Time.deltaTime);
+            controller.Move(moveForward * Time.deltaTime);
         }
 
         if (state == State.Dead)
@@ -124,7 +120,6 @@ public class testCharacterController : MonoBehaviour
         
        if (other.gameObject.CompareTag("Respawn"))
         {
-            Debug.Log("collided");
             state = State.Dead;
         }
     }

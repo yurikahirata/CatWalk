@@ -10,9 +10,8 @@ public class Platform : MonoBehaviour
     private Rigidbody rb;
     private Vector3 targetPos;
  
-    public float speed; // speed - units per second
+    public float speed;
     public bool moveObj; // toggle motion on and off
-    // public bool forwards = true;
 
 
     // Start is called before the first frame update
@@ -45,10 +44,9 @@ public class Platform : MonoBehaviour
                 targetPos = end.position;
             }
 
-            //walk towards target
+            //move towards target
             Vector3 targetDirection = (targetPos - currentPos).normalized;
-            //rb.MovePosition(transform.position + targetDirection * speed * Time.deltaTime);
-            transform.position += (targetDirection * speed * Time.deltaTime);
+            rb.MovePosition(transform.position + targetDirection * speed * Time.deltaTime);
             
         }
             
