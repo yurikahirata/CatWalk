@@ -51,4 +51,5 @@ public class PauseMenuScript : MonoBehaviour
     {
         Application.Quit();
     }
+
 }
