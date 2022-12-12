@@ -32,11 +32,16 @@ public class Portal : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            source.clip = portalSound;
-            print(source.clip);
-            source.Play();
+            StartCoroutine(LevelFinished());
             SceneManager.LoadScene(level);
         }
+    }
+
+    private IEnumerator LevelFinished()
+    {
+        source.clip = portalSound;
+        source.Play();
+        yield return new WaitForSeconds(0);
     }
 
 }
