@@ -49,10 +49,10 @@ GameObject:
   - component: {fileID: 8573952882158383429}
   - component: {fileID: 8573952881698015216}
   - component: {fileID: 8573952881698015221}
-  - component: {fileID: 8573952881698015223}
   - component: {fileID: 8573952881698015222}
   - component: {fileID: -6073680427239567035}
   - component: {fileID: 5684132853084273104}
+  - component: {fileID: 8227650636683816913}
   m_Layer: 0
   m_Name: Smaller Kitt
   m_TagString: Player
@@ -128,27 +128,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.6, z: 0.75}
   m_Center: {x: 0, y: 0.3, z: 0}
---- !u!114 &8573952881698015223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8573952882149016195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b606e8cfeeaec4c569e0e9662ca06520, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 4
-  turningSpeed: 100
-  jumpSpeed: 30
-  gravity: 20
-  jumpHeight: 1.25
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  deathSound: {fileID: 8300000, guid: dc06af3e342a64eac8dac4a8a217bde9, type: 3}
 --- !u!114 &8573952881698015222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +251,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8227650636683816913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8573952882149016195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf12184733b548ef807d9387e581843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  turningSpeed: 70
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  deathSound: {fileID: 8300000, guid: dc06af3e342a64eac8dac4a8a217bde9, type: 3}
+  jumpHeight: 1
 --- !u!1 &8573952882149016197
 GameObject:
   m_ObjectHideFlags: 0

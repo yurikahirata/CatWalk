@@ -2,15 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-
-public class yurikaTest : MonoBehaviour
+public class catController : MonoBehaviour
 {
     public float speed = 6.0F;
     public float turningSpeed = 200f;
-   // public float jumpSpeed = 30.0f;
-   // public float gravity = 20.0f;
     public LayerMask groundLayer = LayerMask.GetMask();
     private AudioSource source;
     public AudioClip deathSound;
@@ -25,7 +21,6 @@ public class yurikaTest : MonoBehaviour
     private float jumpGravity;
     private float groundedTimer;
     public float jumpHeight = 1.25f;
-    //private float verticalVelocity;
 
 
     public enum State
@@ -35,7 +30,7 @@ public class yurikaTest : MonoBehaviour
     }
 
     private State state;
- 
+
 
     void Start()
     {
@@ -74,26 +69,19 @@ public class yurikaTest : MonoBehaviour
             bool onPlatform = Physics.Raycast(transform.position, Vector3.down, out hit, groundRayLength, groundLayer);
             if (hit.transform != null)
             {
-                Debug.Log("I'm on a " + hit.transform.gameObject);
                 bool movingPlat = hit.transform.gameObject.GetComponent<Platform>().moveObj;
                 Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
                 if (movingPlat) { moveForward += rb.velocity; }
             }
 
             // actually move
-                controller.Move(moveForward * Time.deltaTime);
-
-            //if (moveForward != Vector3.zero)
-            //{
-            //    gameObject.transform.forward = moveForward;
-            //}
+            controller.Move(moveForward * Time.deltaTime);
 
             // JUMP
             groundedTimer -= Time.deltaTime;
 
-            if (Input.GetKey(KeyCode.Space) && groundedTimer <= 0.0f) // && controller.isGrounded
+            if (Input.GetKey(KeyCode.Space) && groundedTimer <= 0.0f)
             {
-                Debug.Log("Jumped");
                 playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * jumpGravity);
                 groundedTimer = 1.4f;
             }
@@ -107,7 +95,6 @@ public class yurikaTest : MonoBehaviour
 
         if (state == State.Dead)
         {
-            //source.PlayOneShot(deathSound);
             source.clip = deathSound;
             source.Play();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -116,10 +103,9 @@ public class yurikaTest : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-       if (other.gameObject.CompareTag("Respawn"))
+
+        if (other.gameObject.CompareTag("Respawn"))
         {
-            Debug.Log("collided");
             state = State.Dead;
         }
     }
