@@ -95,8 +95,7 @@ public class catController : MonoBehaviour
 
         if (state == State.Dead)
         {
-            source.clip = deathSound;
-            source.Play();
+            StartCoroutine(OnDeath());
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
@@ -108,5 +107,12 @@ public class catController : MonoBehaviour
         {
             state = State.Dead;
         }
+    }
+
+    private IEnumerator OnDeath()
+    {
+        source.clip = deathSound;
+        source.Play();
+        yield return new WaitForSeconds(0);
     }
 }
