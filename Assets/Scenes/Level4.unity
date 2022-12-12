@@ -305,7 +305,7 @@ Transform:
   - {fileID: 269798126}
   - {fileID: 1942263961}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &23142666 stripped
 GameObject:
@@ -2615,6 +2615,10 @@ PrefabInstance:
       propertyPath: start
       value: 
       objectReference: {fileID: 500401736}
+    - target: {fileID: 3155592487677483283, guid: df069c3e1d783464ba9e8813f6ef34dd, type: 3}
+      propertyPath: moveObj
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3155592487677483292, guid: df069c3e1d783464ba9e8813f6ef34dd, type: 3}
       propertyPath: m_Name
       value: platformWithRb
