@@ -4326,7 +4326,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8573952882148794019, guid: 9807725dbc06c6b49a6ac2066a87f6be, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8573952882148794019, guid: 9807725dbc06c6b49a6ac2066a87f6be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5217,7 +5217,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.403
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -7637,7 +7637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5090706455710765372, guid: 8b9691cb0f6fc4ccb918a7da2d06f9f0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.097
       objectReference: {fileID: 0}
     - target: {fileID: 5090706455710765372, guid: 8b9691cb0f6fc4ccb918a7da2d06f9f0, type: 3}
       propertyPath: m_LocalPosition.z

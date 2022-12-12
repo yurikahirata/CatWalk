@@ -1713,10 +1713,10 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.403
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -2822,7 +2822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 560494994266631538, guid: fc1c41b54f4de4ced9f21ea5b534df98, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.044
+      value: -0.048
       objectReference: {fileID: 0}
     - target: {fileID: 560494994266631538, guid: fc1c41b54f4de4ced9f21ea5b534df98, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2863,6 +2863,14 @@ PrefabInstance:
     - target: {fileID: 560494994266631550, guid: fc1c41b54f4de4ced9f21ea5b534df98, type: 3}
       propertyPath: m_Name
       value: FloorButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311001097213868987, guid: fc1c41b54f4de4ced9f21ea5b534df98, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311001097213868987, guid: fc1c41b54f4de4ced9f21ea5b534df98, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc1c41b54f4de4ced9f21ea5b534df98, type: 3}
@@ -3126,7 +3134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5090706455710765372, guid: 8b9691cb0f6fc4ccb918a7da2d06f9f0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.03
+      value: -0.047
       objectReference: {fileID: 0}
     - target: {fileID: 5090706455710765372, guid: 8b9691cb0f6fc4ccb918a7da2d06f9f0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3165,8 +3173,12 @@ PrefabInstance:
       value: Traffic Cone
       objectReference: {fileID: 0}
     - target: {fileID: 5095066831500205822, guid: 8b9691cb0f6fc4ccb918a7da2d06f9f0, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095066831500205822, guid: 8b9691cb0f6fc4ccb918a7da2d06f9f0, type: 3}
       propertyPath: m_Constraints
-      value: 112
+      value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 5095066831500205822, guid: 8b9691cb0f6fc4ccb918a7da2d06f9f0, type: 3}
       propertyPath: m_CollisionDetection
