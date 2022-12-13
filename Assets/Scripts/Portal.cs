@@ -28,7 +28,7 @@ public class Portal : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter (Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -43,5 +43,6 @@ public class Portal : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(level);
     }
+
 
 }
