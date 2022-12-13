@@ -33,7 +33,6 @@ public class Portal : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             StartCoroutine(LevelFinished());
-            SceneManager.LoadScene(level);
         }
     }
 
@@ -41,7 +40,8 @@ public class Portal : MonoBehaviour
     {
         source.clip = portalSound;
         source.Play();
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(level);
     }
 
 }

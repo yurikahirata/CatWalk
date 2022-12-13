@@ -96,7 +96,6 @@ public class catController : MonoBehaviour
         if (state == State.Dead)
         {
             StartCoroutine(OnDeath());
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -113,6 +112,7 @@ public class catController : MonoBehaviour
     {
         source.clip = deathSound;
         source.Play();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
