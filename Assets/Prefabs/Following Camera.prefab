@@ -53,7 +53,7 @@ MonoBehaviour:
   rotationOffset: {x: 0, y: 0, z: 0}
   obstacleLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
 --- !u!20 &4335073093062298569
 Camera:
   m_ObjectHideFlags: 0
