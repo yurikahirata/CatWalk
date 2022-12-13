@@ -35,10 +35,11 @@ public class CameraFollow : MonoBehaviour
         Vector3 targetToCamera = transform.position - target.position;
         RaycastHit hit;
         Vector3 newCameraPosition = transform.position;
+        Debug.DrawLine(target.position, newCameraPosition + targetToCamera * 10);
         if (Physics.Raycast(target.position, targetToCamera,
             out hit, locationOffset.magnitude, obstacleLayerMask))
         {
-            newCameraPosition = Vector3.Lerp(transform.position, hit.point, smoothSpeed);
+            newCameraPosition = hit.point;
         }
         transform.position = newCameraPosition;
 
