@@ -113,6 +113,6 @@ public class catController : MonoBehaviour
     {
         source.clip = deathSound;
         source.Play();
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(2);
     }
 }
