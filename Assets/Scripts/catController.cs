@@ -10,6 +10,7 @@ public class catController : MonoBehaviour
     public LayerMask groundLayer = LayerMask.GetMask();
     private AudioSource source;
     public AudioClip deathSound;
+    public bool isDying;
 
     private Vector3 playerVelocity;
     private Vector3 moveForward;
@@ -39,6 +40,7 @@ public class catController : MonoBehaviour
         state = State.Alive;
         jumpGravity = -9.81f;
         groundedTimer = 0;
+        isDying = false;
     }
 
     void FixedUpdate()
@@ -92,10 +94,12 @@ public class catController : MonoBehaviour
 
         }
 
-
-        if (state == State.Dead)
+        if (!isDying)
         {
-            StartCoroutine(OnDeath());
+            if (state == State.Dead)
+            {
+                StartCoroutine(OnDeath());
+            }
         }
     }
 
@@ -110,9 +114,12 @@ public class catController : MonoBehaviour
 
     private IEnumerator OnDeath()
     {
+        isDying = true;
         source.clip = deathSound;
+        Debug.Log(source.clip);
         source.Play();
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        isDying = false;
     }
 }
