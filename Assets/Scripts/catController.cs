@@ -23,6 +23,7 @@ public class catController : MonoBehaviour
     private float groundedTimer;
     public float jumpHeight = 1.25f;
 
+    public GameObject deathCanvas;
 
     public enum State
     {
@@ -41,6 +42,7 @@ public class catController : MonoBehaviour
         jumpGravity = -9.81f;
         groundedTimer = 0;
         isDying = false;
+        deathCanvas.SetActive(false);
     }
 
     void FixedUpdate()
@@ -118,6 +120,7 @@ public class catController : MonoBehaviour
         source.clip = deathSound;
         Debug.Log(source.clip);
         source.Play();
+        deathCanvas.SetActive(true);
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         isDying = false;

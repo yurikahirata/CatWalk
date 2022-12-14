@@ -108,9 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcff0a48f40545029e263d06db4338b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swingFull: 0
-  swingHalf: 0
   speed: 0
+  state: 0
 --- !u!1001 &6456712376632844343
 PrefabInstance:
   m_ObjectHideFlags: 0
