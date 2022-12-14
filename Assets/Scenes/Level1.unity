@@ -1573,6 +1573,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeathCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4867150034767371766, guid: 0d4d040e159814b4cb48175905bbdde9, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867150034767371766, guid: 0d4d040e159814b4cb48175905bbdde9, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867150034767371766, guid: 0d4d040e159814b4cb48175905bbdde9, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867150034767371766, guid: 0d4d040e159814b4cb48175905bbdde9, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 576
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d4d040e159814b4cb48175905bbdde9, type: 3}
 --- !u!1 &902699992 stripped
@@ -3395,6 +3411,14 @@ PrefabInstance:
     - target: {fileID: 2309459311347576744, guid: 08732ea40aaf34482b9099ed62a409ae, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309459311347576746, guid: 08732ea40aaf34482b9099ed62a409ae, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309459311347576746, guid: 08732ea40aaf34482b9099ed62a409ae, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 576
       objectReference: {fileID: 0}
     - target: {fileID: 2309459311347576756, guid: 08732ea40aaf34482b9099ed62a409ae, type: 3}
       propertyPath: m_Pivot.x
