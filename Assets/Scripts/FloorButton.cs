@@ -5,21 +5,14 @@ using UnityEngine;
 public class FloorButton : MonoBehaviour
 {
     public GameObject platform;
-    public bool ifLevel4;
+    public bool ifLevel4; // secret level button
 
-    // Start is called before the first frame update
     void Start()
     {
         platform.SetActive(false);
         if (ifLevel4)
             gameObject.GetComponent<Renderer>().material.color = new Color(0.3f,0.3f,0.3f);
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-     
     }
 
     private void OnTriggerStay(Collider other)

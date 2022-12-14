@@ -14,14 +14,12 @@ public class Platform : MonoBehaviour
     public bool moveObj; // toggle motion on and off
 
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         targetPos = end.position;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (moveObj == true)

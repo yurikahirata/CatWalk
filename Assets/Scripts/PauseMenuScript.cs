@@ -30,7 +30,6 @@ public class PauseMenuScript : MonoBehaviour
 
     public void Pause()
     {
-        Debug.Log("pause!");
         isPaused = true;
         Time.timeScale = 0.0f;
         menuUI.gameObject.SetActive(true);

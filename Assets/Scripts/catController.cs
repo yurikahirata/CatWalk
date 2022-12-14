@@ -105,7 +105,7 @@ public class catController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // if collided with enemies or spotlights
     {
 
         if (other.gameObject.CompareTag("Respawn"))
@@ -118,7 +118,6 @@ public class catController : MonoBehaviour
     {
         isDying = true;
         source.clip = deathSound;
-        Debug.Log(source.clip);
         source.Play();
         deathCanvas.SetActive(true);
         yield return new WaitForSeconds(1);
